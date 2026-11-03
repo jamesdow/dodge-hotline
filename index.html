@@ -86,12 +86,38 @@ body.is-room .room{display:grid;min-height:100vh;place-items:center;padding:4vh 
 #qr{width:min(32vw,60vh)}
 #qr img,#qr canvas{width:100%!important;height:auto!important}
 @media (max-width:820px){.stage{grid-template-columns:1fr}#qr{width:min(80vw,420px)}}
+/* tablet */
+@media (min-width:700px){
+  .wrap{max-width:680px}
+  .moves{display:grid;grid-template-columns:repeat(5,1fr);overflow:visible}
+  .move{flex:none}
+}
+/* desktop: hero left, call right; serious bit split with the pack */
+@media (min-width:1000px){
+  .wrap{max-width:1180px;padding-left:max(40px,env(safe-area-inset-left,0px));padding-right:max(40px,env(safe-area-inset-right,0px))}
+  .top{display:grid;grid-template-columns:1.15fr .85fr;grid-template-areas:"bar bar" "hero call" "hero log";column-gap:64px;align-items:start;min-height:calc(100vh - 40px);align-content:center}
+  .top .bar{grid-area:bar;padding-block:22px 10px}
+  .top .hero{grid-area:hero;text-align:left;justify-items:start;align-self:center;gap:18px}
+  .top h1{font-size:clamp(90px,8.6vw,150px)}
+  .top .sub{font-size:22px;max-width:30ch}
+  .callzone{grid-area:call;padding-block:40px 6px}
+  .dial{width:300px}
+  .log{grid-area:log;align-self:start}
+  .band{border-radius:40px 40px 0 0}
+  .band .wrap{grid-template-columns:1.2fr .8fr;grid-template-areas:"kick pack" "h2 pack" "p pack" "moves moves" "legal legal";column-gap:56px;row-gap:16px;padding-block:56px 48px;align-items:start}
+  .band .kick{grid-area:kick}
+  .band h2{grid-area:h2;font-size:clamp(48px,4.6vw,72px)}
+  .band .lead{grid-area:p;font-size:18px}
+  .band .moves{grid-area:moves;gap:16px;margin-top:10px}
+  .band .pack{grid-area:pack;align-self:center}
+  .band .legal{grid-area:legal}
+}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
 <div class="phone">
-  <div class="wrap">
+  <div class="wrap top">
     <div class="bar"><img src="img/logo.png" alt="Sensodyne"><span class="pill">Dodge Hotline</span></div>
     <div class="hero">
       <div class="kick">The Sensodyne Dodge Hotline</div>
@@ -113,8 +139,8 @@ body.is-room .room{display:grid;min-height:100vh;place-items:center;padding:4vh 
   <div class="band">
     <div class="wrap">
       <div class="kick">But seriously</div>
-      <h2>You can dodge your tita. <em>You can't dodge ngilo.</em></h2>
-      <p>Ngilo is that sharp twinge from something cold, hot or sweet. Do you do any of these?</p>
+      <h2>You can dodge your tita's halo&#8209;halo. <em>You can't dodge ngilo.</em></h2>
+      <p class="lead">Ngilo is that sharp twinge from something cold, hot or sweet. Do you do any of these?</p>
       <div class="moves">
         <div class="move"><img src="img/B2.jpg" alt=""><b>The Tagay Pass</b><span>NGILO ×2</span></div>
         <div class="move"><img src="img/B3.jpg" alt=""><b>The Lip Curl</b><span>NGILO ×2</span></div>
